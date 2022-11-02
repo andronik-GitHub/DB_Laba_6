@@ -1,74 +1,74 @@
+п»ї--==============================--
+
+CREATE DATABASE TempDATABASE; -- СЃС‚РІРѕСЂРµРЅРЅСЏ Р±Р°Р·Рё РґР°РЅРёС…
+GO -- Р·Р°РІРµСЂС€РµРЅРЅСЏ РїР°РєРµС‚Р°
+
+USE TempDATABASE; -- РїРµСЂРµРєР»СЋС‡РµРЅРЅСЏ РЅР° РЅРѕРІРѕСЃС‚РІРѕСЂРµРЅСѓ Р‘Р”
+GO -- Р·Р°РІРµСЂС€РµРЅРЅСЏ РїР°РєРµС‚Р°
+
 --==============================--
 
-CREATE DATABASE TempDATABASE; -- створення бази даних
-GO -- завершення пакета
-
-USE TempDATABASE; -- переключення на новостворену БД
-GO -- завершення пакета
-
---==============================--
-
-CREATE TABLE Table_Subject -- створення таблиці
+CREATE TABLE Table_Subject -- СЃС‚РІРѕСЂРµРЅРЅСЏ С‚Р°Р±Р»РёС†С–
 (
 	ID_Subject INT NOT NULL,
 	Name_subject NCHAR(255) NULL,
 	Program_subject NVARCHAR(MAX) NULL
 
-	PRIMARY KEY (ID_Subject) -- створення первинного ключа
+	PRIMARY KEY (ID_Subject) -- СЃС‚РІРѕСЂРµРЅРЅСЏ РїРµСЂРІРёРЅРЅРѕРіРѕ РєР»СЋС‡Р°
 );
-GO -- завершення пакета
+GO -- Р·Р°РІРµСЂС€РµРЅРЅСЏ РїР°РєРµС‚Р°
 
 --==============================--
 
-CREATE TABLE Table_Type_Exam -- створення таблиці
+CREATE TABLE Table_Type_Exam -- СЃС‚РІРѕСЂРµРЅРЅСЏ С‚Р°Р±Р»РёС†С–
 (
 	ID_Type_Exam INT NOT NULL,
 	Name_Type_Exam NCHAR(50) NULL
 
-	PRIMARY KEY (ID_Type_Exam) -- створення первинного ключа
+	PRIMARY KEY (ID_Type_Exam) -- СЃС‚РІРѕСЂРµРЅРЅСЏ РїРµСЂРІРёРЅРЅРѕРіРѕ РєР»СЋС‡Р°
 );
-GO -- завершення пакета
+GO -- Р·Р°РІРµСЂС€РµРЅРЅСЏ РїР°РєРµС‚Р°
 
 --==============================--
 
-CREATE TABLE Table_Subject_Success -- створення таблиці
+CREATE TABLE Table_Subject_Success -- СЃС‚РІРѕСЂРµРЅРЅСЏ С‚Р°Р±Р»РёС†С–
 (
 	ID_Student INT NOT NULL,
 	ID_Subject INT NOT NULL,
 	ID_Type_Exam INT NOT NULL,
 	Mark FLOAT NULL,
 
-	PRIMARY KEY(ID_Student, ID_Subject, ID_Type_Exam), -- створення первинного ключа(складений)
+	PRIMARY KEY(ID_Student, ID_Subject, ID_Type_Exam), -- СЃС‚РІРѕСЂРµРЅРЅСЏ РїРµСЂРІРёРЅРЅРѕРіРѕ РєР»СЋС‡Р°(СЃРєР»Р°РґРµРЅРёР№)
 );
-GO -- завершення пакета
+GO -- Р·Р°РІРµСЂС€РµРЅРЅСЏ РїР°РєРµС‚Р°
 
 --==============================--
 
-ALTER TABLE Table_Subject_Success -- зміна таблиці
-ADD CONSTRAINT FK_Subject_Success_To_Subject FOREIGN KEY(ID_Subject) REFERENCES Table_Subject (ID_Subject), -- додавання зовнішніх ключів
-	CONSTRAINT FK_Subject_Success_To_Type_Exam FOREIGN KEY(ID_Type_Exam) REFERENCES Table_Type_Exam (ID_Type_Exam) -- додавання зовнішніх ключів
-GO -- завершення пакета
+ALTER TABLE Table_Subject_Success -- Р·РјС–РЅР° С‚Р°Р±Р»РёС†С–
+ADD CONSTRAINT FK_Subject_Success_To_Subject FOREIGN KEY(ID_Subject) REFERENCES Table_Subject (ID_Subject), -- РґРѕРґР°РІР°РЅРЅСЏ Р·РѕРІРЅС–С€РЅС–С… РєР»СЋС‡С–РІ
+	CONSTRAINT FK_Subject_Success_To_Type_Exam FOREIGN KEY(ID_Type_Exam) REFERENCES Table_Type_Exam (ID_Type_Exam) -- РґРѕРґР°РІР°РЅРЅСЏ Р·РѕРІРЅС–С€РЅС–С… РєР»СЋС‡С–РІ
+GO -- Р·Р°РІРµСЂС€РµРЅРЅСЏ РїР°РєРµС‚Р°
 
 --==============================--
 
-ALTER TABLE Table_Subject_Success -- зміна таблиці
-DROP FK_Subject_Success_To_Subject; -- видалення зовнішнього ключа
-GO -- завершення пакета
+ALTER TABLE Table_Subject_Success -- Р·РјС–РЅР° С‚Р°Р±Р»РёС†С–
+DROP FK_Subject_Success_To_Subject; -- РІРёРґР°Р»РµРЅРЅСЏ Р·РѕРІРЅС–С€РЅСЊРѕРіРѕ РєР»СЋС‡Р°
+GO -- Р·Р°РІРµСЂС€РµРЅРЅСЏ РїР°РєРµС‚Р°
 
-ALTER TABLE Table_Subject_Success -- зміна таблиці
-DROP FK_Subject_Success_To_Type_Exam; -- видалення зовнішнього ключа
-GO -- завершення пакета
-
-
-DROP TABLE Table_Type_Exam; -- видалення таблиці
-GO -- завершення пакета
-DROP TABLE Table_Subject; -- видалення таблиці
-GO -- завершення пакета
-DROP TABLE Table_Subject_Success; -- видалення таблиці
-GO -- завершення пакета
+ALTER TABLE Table_Subject_Success -- Р·РјС–РЅР° С‚Р°Р±Р»РёС†С–
+DROP FK_Subject_Success_To_Type_Exam; -- РІРёРґР°Р»РµРЅРЅСЏ Р·РѕРІРЅС–С€РЅСЊРѕРіРѕ РєР»СЋС‡Р°
+GO -- Р·Р°РІРµСЂС€РµРЅРЅСЏ РїР°РєРµС‚Р°
 
 
-DROP DATABASE TempDATABASE; -- видалення БД
-GO -- завершення пакета
+DROP TABLE Table_Type_Exam; -- РІРёРґР°Р»РµРЅРЅСЏ С‚Р°Р±Р»РёС†С–
+GO -- Р·Р°РІРµСЂС€РµРЅРЅСЏ РїР°РєРµС‚Р°
+DROP TABLE Table_Subject; -- РІРёРґР°Р»РµРЅРЅСЏ С‚Р°Р±Р»РёС†С–
+GO -- Р·Р°РІРµСЂС€РµРЅРЅСЏ РїР°РєРµС‚Р°
+DROP TABLE Table_Subject_Success; -- РІРёРґР°Р»РµРЅРЅСЏ С‚Р°Р±Р»РёС†С–
+GO -- Р·Р°РІРµСЂС€РµРЅРЅСЏ РїР°РєРµС‚Р°
+
+
+DROP DATABASE TempDATABASE; -- РІРёРґР°Р»РµРЅРЅСЏ Р‘Р”
+GO -- Р·Р°РІРµСЂС€РµРЅРЅСЏ РїР°РєРµС‚Р°
 
 --==============================--
