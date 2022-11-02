@@ -1,0 +1,74 @@
+--==============================--
+
+CREATE DATABASE TempDATABASE; -- створення бази даних
+GO -- завершення пакета
+
+USE TempDATABASE; -- переключення на новостворену БД
+GO -- завершення пакета
+
+--==============================--
+
+CREATE TABLE Table_Subject -- створення таблиці
+(
+	ID_Subject INT NOT NULL,
+	Name_subject NCHAR(255) NULL,
+	Program_subject NVARCHAR(MAX) NULL
+
+	PRIMARY KEY (ID_Subject) -- створення первинного ключа
+);
+GO -- завершення пакета
+
+--==============================--
+
+CREATE TABLE Table_Type_Exam -- створення таблиці
+(
+	ID_Type_Exam INT NOT NULL,
+	Name_Type_Exam NCHAR(50) NULL
+
+	PRIMARY KEY (ID_Type_Exam) -- створення первинного ключа
+);
+GO -- завершення пакета
+
+--==============================--
+
+CREATE TABLE Table_Subject_Success -- створення таблиці
+(
+	ID_Student INT NOT NULL,
+	ID_Subject INT NOT NULL,
+	ID_Type_Exam INT NOT NULL,
+	Mark FLOAT NULL,
+
+	PRIMARY KEY(ID_Student, ID_Subject, ID_Type_Exam), -- створення первинного ключа(складений)
+);
+GO -- завершення пакета
+
+--==============================--
+
+ALTER TABLE Table_Subject_Success -- зміна таблиці
+ADD CONSTRAINT FK_Subject_Success_To_Subject FOREIGN KEY(ID_Subject) REFERENCES Table_Subject (ID_Subject), -- додавання зовнішніх ключів
+	CONSTRAINT FK_Subject_Success_To_Type_Exam FOREIGN KEY(ID_Type_Exam) REFERENCES Table_Type_Exam (ID_Type_Exam) -- додавання зовнішніх ключів
+GO -- завершення пакета
+
+--==============================--
+
+ALTER TABLE Table_Subject_Success -- зміна таблиці
+DROP FK_Subject_Success_To_Subject; -- видалення зовнішнього ключа
+GO -- завершення пакета
+
+ALTER TABLE Table_Subject_Success -- зміна таблиці
+DROP FK_Subject_Success_To_Type_Exam; -- видалення зовнішнього ключа
+GO -- завершення пакета
+
+
+DROP TABLE Table_Type_Exam; -- видалення таблиці
+GO -- завершення пакета
+DROP TABLE Table_Subject; -- видалення таблиці
+GO -- завершення пакета
+DROP TABLE Table_Subject_Success; -- видалення таблиці
+GO -- завершення пакета
+
+
+DROP DATABASE TempDATABASE; -- видалення БД
+GO -- завершення пакета
+
+--==============================--
