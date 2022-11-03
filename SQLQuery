@@ -66,6 +66,7 @@ INSERT INTO Table_Subject (ID_Subject, Name_subject, Program_subject)
 GO
 
 SELECT * FROM Table_Subject;
+GO
 
 --==============================--
 
@@ -83,6 +84,7 @@ INSERT INTO Table_Type_Exam (ID_Type_Exam, Name_Type_Exam)
 GO
 
 SELECT * FROM Table_Type_Exam;
+GO
 
 --==============================--
 
@@ -97,6 +99,7 @@ INSERT INTO Table_Subject_Success (ID_Student, ID_Subject, ID_Type_Exam, Mark)
 GO
 
 SELECT * FROM Table_Subject_Success;
+GO
 
 --==============================--
 
