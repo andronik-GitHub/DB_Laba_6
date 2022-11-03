@@ -51,6 +51,53 @@ GO -- завершення пакета
 
 --==============================--
 
+INSERT INTO Table_Subject (ID_Subject, Name_subject, Program_subject)
+	VALUES  (1, 'Tob', 'Math'),
+		(2, 'Bob', 'English'),
+		(3, 'Sam', 'Data Base'),
+		(4, 'Mike', 'Math'),
+		(5, 'Jordan', 'History'),
+		(6, 'Meg', 'Physics'),
+		(7, 'Ivan', 'Java Script'),
+		(8, 'Roma', 'C#'),
+		(9, 'Andrea', 'Biology'),
+		(10, 'Ivanka', 'Chemistry'),
+		(11, 'Benjamin', 'Geography');
+GO
+
+SELECT * FROM Table_Subject;
+
+--==============================--
+
+INSERT INTO Table_Type_Exam (ID_Type_Exam, Name_Type_Exam)
+	VALUES  (1, 'Math'),
+		(2, 'English'),
+		(3, 'Data Base'),
+		(4, 'History'),
+		(5, 'Physics'),
+		(6, 'Java Script'),
+		(7, 'C#'),
+		(8, 'Biology'),
+		(9, 'Chemistry'),
+		(10, 'Geography');
+GO
+
+SELECT * FROM Table_Type_Exam;
+
+--==============================--
+
+INSERT INTO Table_Subject_Success (ID_Student, ID_Subject, ID_Type_Exam, Mark)
+	VALUES  (1, 8, 2, 50.2),
+		(6, 4, 10, 90.4),
+		(2, 7, 7, 82.0),
+		(8, 10, 3, 65.9),
+		(5, 3, 1, 78.8),
+		(7, 7, 6, 87.1)
+		(9, 2, 10, 53.5);
+GO
+
+SELECT * FROM Table_Subject_Success;
+
 --==============================--
 
 ALTER TABLE Table_Subject_Success -- зміна таблиці
